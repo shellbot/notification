@@ -340,6 +340,51 @@ class NotificationsBag implements ArrayableInterface, JsonableInterface, Countab
     {
         return $this->show('success', $format);
     }
+    
+    /**
+     * Shortcut to add danger message.
+     *
+     * @param $message
+     * @param null $format
+     * @return \Krucas\Notification\NotificationsBag
+     */
+    public function danger($message, $format = null)
+    {
+        return $this->add('danger', $message, true, $format);
+    }
+
+    /**
+     * Adds instant danger message. It will be shown in same request.
+     *
+     * @param $message
+     * @param null $format
+     * @return \Krucas\Notification\NotificationsBag
+     */
+    public function dangerInstant($message, $format = null)
+    {
+        return $this->add('danger', $message, false, $format);
+    }
+
+    /**
+     * Clears danger messages.
+     *
+     * @return \Krucas\Notification\NotificationsBag
+     */
+    public function clearDanger()
+    {
+        return $this->clear('danger');
+    }
+
+    /**
+     * Renders danger messages.
+     *
+     * @param null $format
+     * @return string
+     */
+    public function showDanger($format = null)
+    {
+        return $this->show('danger', $format);
+    }
 
     /**
      * Shortcut to add error message.
